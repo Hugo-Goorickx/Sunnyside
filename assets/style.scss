@@ -1,0 +1,645 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100;0,9..144,200;0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,100;1,9..144,200;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700;1,9..144,800;1,9..144,900&family=Open+Sans:wght@300&display=swap');
+
+$size_div1: 120vw;
+$size_div2: 100vw;
+$size_div3: 100vw;
+$size_div4: 90vw;
+$size_div6: 150vw;
+$size_div7: 150vw;
+$size_div8: 300vw;
+$size_div9: 100vw;
+$size_div10: 75vw;
+
+$size_div_aa: 5vw;
+$size_div_a: 50vw;
+$size_div_b_d: 40vw;
+$size_div_e: 60vw;
+$size_div_f: 30vw;
+$size_div_g: 25vw;
+
+@mixin template_div_2($link)
+{
+    background: url($link) center;   
+    background-size: 50vw $size_div_b_d;
+    height:$size_div_b_d;
+    font-size: 1.5vw;
+    h1
+    {
+        margin-top: 25vw;
+        font-size: 2vw;
+    }
+}
+
+@mixin template_pic ($link, $width, $height) 
+{
+    background: url($link) center;   
+    background-size: $width $height;
+}
+
+@mixin template_grid ($cols, $rows)
+{
+    display: grid;
+    grid:
+    {
+        template-columns: $cols;
+        template-rows: $rows;   
+    };
+}
+
+@mixin template_div ($link, $div_height)
+{
+    @include template_pic($link, 200vw, 167vw);
+    height: $div_height;
+    color: #24554A;
+    h1 { margin-top: 100vw; }
+}
+
+@mixin template_wh ($height, $width)
+{
+    height: $height;
+    width: $width;
+}
+
+@media screen and (max-width: 425px)
+{
+    body { font-size: 5vw; }
+    header { @include template_wh(30vw, 100%); }
+    h1 { font-size: 10vw; }
+    .parent { @include template_grid(1fr, $size_div1 $size_div2 $size_div3 $size_div4 $size_div3 $size_div6 $size_div7 $size_div8 $size_div9); }
+
+    .sunnyday
+    {
+        font-size: 7vw;
+        margin:
+        {
+            left: 5vw;
+            top: 6vw;
+        };
+    }
+
+    .div1
+    {
+        grid-area: 1 / 1 / 2 / 2;
+        @include template_pic("../images/photos/image-header.jpg", 200vw, 120vw);
+        height: $size_div1;
+        h1
+        {
+            font-size: 20vw;
+            margin-top: 10vw;
+        }
+    }
+
+    .div2
+    {
+        grid-area: 2 / 1 / 3 / 2;
+        @include template_pic("../images/photos/image-transform.jpg", 108vw, 100vw);
+        height: $size_div2;
+    }
+
+    .div3
+    {
+        grid-area: 3 / 1 / 4 / 2;
+        margin-top: 5vw;
+        height:$size_div3;
+    }
+
+    .div4
+    {
+        grid-area: 4 / 1 / 5 / 2;
+        @include template_pic("../images/photos/image-stand-out.jpg", 108vw, 100vw);
+        height: $size_div4;
+    }
+
+    .div5
+    {
+        grid-area: 5 / 1 / 6 / 2;
+        height: $size_div3;
+    }
+
+    .div6
+    {
+        grid-area: 6 / 1 / 7 / 2;
+        @include template_div("../images/photos/image-graphic-design.jpg", $size_div6);
+    }
+    .div7
+    {
+        grid-area: 7 / 1 / 8 / 2;
+        @include template_div("../images/photos/image-photography.jpg", $size_div7);
+    }
+
+    .div8
+    {
+        grid-area: 8 / 1 / 9 / 2;
+        @include template_grid(1fr, 20vw 85vw 95vw 85vw);
+        height: $size_div8;
+        h1
+        {
+            grid-area: 1 / 1 / 2 / 2;
+            font-size: 7.5vw;
+        }
+        .pers1 { grid-area: 2 / 1 / 3 / 2; }
+        .pers2 { grid-area: 3 / 1 / 4 / 2; }
+        .pers3 { grid-area: 4 / 1 / 5 / 2; }
+    }
+
+    .div9
+    {
+        grid-area: 9 / 1 / 10 / 2;
+        @include template_grid(repeat(2, 1fr), repeat(2, 1fr));
+        @include template_wh($size_div9, 100%);
+        .pic1
+        {
+            grid-area: 1 / 1 / 2 / 2;
+            @include template_pic("../images/photos/image-gallery-milkbottles.jpg", 100%, 125%);
+        }
+        .pic2
+        {
+            grid-area: 1 / 2 / 2 / 3;
+            @include template_pic("../images/photos/image-gallery-orange.jpg", 100%, 125%);
+        }
+        .pic3
+        {
+            grid-area: 2 / 1 / 3 / 2;
+            @include template_pic("../images/photos/image-gallery-cone.jpg", 100%, 125%);
+        }
+        .pic4
+        {
+            grid-area: 2 / 2 / 3 / 3;
+            @include template_pic("../images/photos/image-gallery-sugarcubes.jpg", 100%, 125%);
+        }
+    }
+
+    .div10
+    {
+        height: $size_div10;
+        word-spacing: 12vw;
+
+        .section1
+        {
+            margin-top: 10vw;
+            font-size: 8vw;
+        }
+
+        .section2 { margin-top: 5vw; }
+        .section3
+        {
+            margin-top: 6vw;
+            @include template_grid(1fr repeat(4, 1fr) 1fr, 8vw);
+        }
+    }
+
+    .text { margin: 0 5%; }
+
+    .link
+    {
+        font-size: 5vw;
+        &::before
+        {
+            @include template_wh(2vw, 30vw);
+            transform: translate(-1vw, 4vw);
+        }
+    }
+
+    .img_pers { @include template_wh(25vw, 25vw); }
+    .pers_titre { font-size: 6vw; }
+    .post { font-size: 4vw; }
+
+    .arrow
+    {
+        margin: auto;
+        @include template_wh(19vw, 8vw);
+    }
+
+    .logo_link
+    {
+        grid-area: 1 / 2 / 2 / 3;
+        @include template_pic("../images/icons/icon-facebook.svg", 8vw, 8vw);
+        &:hover { @include template_pic("../images/icons/icon-facebook-2.svg", 8vw, 8vw); }
+    }
+
+    .logo_link1
+    {
+        grid-area: 1 / 3 / 2 / 4;
+        @include template_pic("../images/icons/icon-instagram.svg", 8vw, 8vw);
+        &:hover { @include template_pic("../images/icons/icon-instagram-2.svg", 8vw, 8vw); }
+    }
+
+    .logo_link2
+    {
+        grid-area: 1 / 4 / 2 / 5;
+        @include template_pic("../images/icons/icon-twitter.svg", 8vw, 8vw);
+        &:hover { @include template_pic("../images/icons/icon-twitter-2.svg", 8vw, 8vw); }
+    }
+
+    .logo_link3
+    {
+        grid-area: 1 / 5 / 2 / 6;
+        @include template_pic("../images/icons/icon-pinterest.svg", 8vw, 8vw);
+        &:hover { @include template_pic("../images/icons/icon-pinterest-2.svg", 8vw, 8vw); }
+    }
+
+    .nav { visibility: hidden; }
+}
+
+@media screen and (min-width: 426px)
+{
+    body { font-size: 1.5vw; }
+    header { @include template_wh(5vw, 100%); }
+    h1 { font-size: 3vw; }
+    .parent { @include template_grid(repeat(2, 1fr), $size_div_a repeat(3, $size_div_b_d) $size_div_e $size_div_f); }
+
+    .sunnyday
+    {
+        font-size: 2vw;
+        margin:
+        {
+            left: 2vw;
+            top: 2vw;
+        };
+    }
+
+    .div1
+    {
+        grid-area: 1 / 1 / 2 / 3;
+        background: url("../images/photos/image-header.jpg") center;   
+        background-size: 90vw $size_div_a;
+        height: $size_div_a;
+        h1
+        {
+            font-size: 8vw;
+            margin-top: 6vw;
+        }
+    }
+
+    .div2
+    {
+        grid-area: 2 / 2 / 3 / 3;
+        @include template_pic("../images/photos/image-transform.jpg", 50vw, $size_div_b_d);
+        height: $size_div_b_d;
+    }
+
+    .div3
+    {
+        grid-area: 2 / 1 / 3 / 2;
+        margin-top: 10vw;
+        height:$size_div_b_d;
+    }
+
+    .div4
+    {
+        grid-area: 3 / 1 / 4 / 2;
+        @include template_pic("../images/photos/image-stand-out.jpg", 50vw, $size_div_b_d);
+        height:$size_div_b_d;
+    }
+
+    .div5
+    {
+        margin-top: 10vw;
+        grid-area: 3 / 2 / 4 / 3;
+        height:$size_div_b_d;
+    }
+
+    .div6
+    {
+        grid-area: 4 / 1 / 5 / 2;
+        @include template_div_2("../images/photos/image-graphic-design.jpg");
+    }
+    .div7
+    {
+        grid-area: 4 / 2 / 5 / 3;
+        @include template_div_2("../images/photos/image-photography.jpg");
+    }
+
+    .div8
+    {
+        grid-area: 5 / 1 / 6 / 3;
+        @include template_grid (repeat(3, 1fr), 10vw 4vw);
+        height: $size_div_e;
+        h1
+        {
+            grid-area: 1 / 1 / 2 / 4;
+            font-size: 2vw;
+            height: 5vw;
+        }
+        .pers1 { grid-area: 2 / 1 / 3 / 2; }
+        .pers2 { grid-area: 2 / 2 / 3 / 3; }
+        .pers3 { grid-area: 2 / 3 / 3 / 4; }
+        .text
+        {
+            text-align: center;
+            margin-left: 8vw;
+            margin-right: 8vw;
+            font-size: 1.2vw;
+        }
+    }
+
+    .div9
+    {
+        grid-area: 6 / 1 / 7 / 3;
+        @include template_grid (repeat(4, 1fr), 1fr);
+        @include template_wh($size_div_f, 100%);
+        .pic1
+        {
+            grid-area: 1 / 1 / 2 / 2;
+            @include template_pic("../images/photos/image-gallery-milkbottles.jpg", 100%, 125%);
+        }
+        .pic2
+        {
+            grid-area: 1 / 2 / 2 / 3;
+            @include template_pic("../images/photos/image-gallery-orange.jpg", 100%, 125%);
+        }
+        .pic3
+        {
+            grid-area: 1 / 3 / 2 / 4;
+            @include template_pic("../images/photos/image-gallery-cone.jpg", 100%, 125%);
+        }
+        .pic4
+        {
+            grid-area: 1 / 4 / 2 / 5;
+            @include template_pic("../images/photos/image-gallery-sugarcubes.jpg", 100%, 125%);
+        }
+    }
+
+    .div10
+    {
+        height: $size_div_g;
+        word-spacing: 4vw;
+    
+        .section1
+        {
+            margin-top: 4vw;
+            font-size: 2.5vw;
+        }
+        
+        .section2 { margin-top: 1vw; }
+
+        .section3
+        {
+            margin-top: 2vw;
+            word-spacing: 1.5vw;
+            @include template_grid(repeat(3, 1fr) repeat(4, 0.5fr) repeat(3, 1fr), 1vw);
+        }
+    }
+
+    .div3, .div5
+    {
+        h1
+        {
+            text-align: start;
+            margin: 0 10vw;
+        }
+    }
+
+    .text
+    {
+        text-align: start;
+        margin: 3vw 8vw 3vw 10vw;
+    }
+
+    .other_text
+    {
+        margin: 1.5vw 15vw 0vw 15vw;
+        font-size: 1vw;
+        line-height: 200%;
+        word-spacing: 0.4vw;
+    }
+
+    .link
+    {
+        margin: 0 10vw;
+        text-align: start;
+        font-size: 1.5vw;
+        &::before
+        {
+            @include template_wh(0.75vw, 9vw);
+            transform: translate(-0.25vw, 1.2vw);
+        }
+    }
+
+    .img_pers { @include template_wh(5vw, 5vw); }
+    .pers_titre { font-size: 1.5vw; }
+    .post { font-size: 1vw; }
+
+    .arrow
+    {
+        position: absolute;
+        top: 15vw;
+        left: 50vw;
+        @include template_wh(9vw, 3vw);
+    }
+
+    .logo_link
+    {
+        grid-area: 1 / 4 / 2 / 5;
+        @include template_pic("../images/icons/icon-facebook.svg", 1vw, 1vw);
+        &:hover { @include template_pic("../images/icons/icon-facebook-2.svg", 1vw, 1vw); }
+    }
+
+    .logo_link1
+    {
+        grid-area: 1 / 5 / 2 / 6;
+        @include template_pic("../images/icons/icon-instagram.svg", 1vw, 1vw);
+        &:hover { @include template_pic("../images/icons/icon-instagram-2.svg", 1vw, 1vw); }
+    }
+
+    .logo_link2
+    {
+        grid-area: 1 / 6 / 2 / 7;
+        @include template_pic("../images/icons/icon-twitter.svg", 1vw, 1vw);
+        &:hover
+        { @include template_pic("../images/icons/icon-twitter-2.svg", 1vw, 1vw); }
+    }
+
+    .logo_link3
+    {
+        grid-area: 1 / 7 / 2 / 8;
+        @include template_pic("../images/icons/icon-pinterest.svg", 1vw, 1vw);
+        &:hover
+        { @include template_pic("../images/icons/icon-pinterest-2.svg", 1vw, 1vw); }
+    }
+
+    .logo_up2
+    { visibility: hidden; }
+}
+
+.logo_link, .logo_link:hover, .logo_link1, .logo_link1:hover, .logo_link2, .logo_link2:hover, .logo_link3, .logo_link3:hover
+{
+    background-repeat: no-repeat;
+}
+
+body
+{
+    font-family: "Fraunces", Fraunces, serif;
+    @include template_wh(100%, 100%);
+    margin: 0 0;
+}
+
+header { background-color: rgb(74, 189, 242) ; }
+
+.parent 
+{
+    text-align: center;
+    @include template_wh(100%, 100%);
+    overflow: hidden;
+}
+
+.sunnyday
+{
+    font:
+    {
+        family: 'Barlow', sans-serif;
+        weight: bold;
+    };
+    color: white;
+    position: absolute;
+}
+
+.div1 { color: white; }
+
+.div8
+{
+    margin-top: 10vw;
+    h1 { color:#A7AAAD; }
+}
+
+.div10
+{
+    text-align: center;
+    overflow: hidden;
+    @include template_grid(1fr, repeat(3, 1fr));
+    background-color: #90D4C6;
+    font-family: 'Barlow', sans-serif;
+
+    .section1
+    {
+        color: #2C7566;
+        grid-area: 1 / 1 / 2 / 2;
+        font-weight: bold;
+    }
+
+    .section2
+    {
+        color: #458D7E;
+        grid-area: 2 / 1 / 3 / 2;
+        font-weight: bold;
+    }
+
+    .section3 { grid-area: 3 / 1 / 4 / 2; }
+}
+
+.text
+{
+    font-family: 'Barlow', sans-serif;
+    color: #808397;
+    line-height: 150%;
+    word-spacing: 0.2vw;
+}
+
+.other_text { font-family: 'Barlow', sans-serif; }
+
+.link
+{
+    opacity: 0.7;
+    font-weight: bold;
+    &:hover { opacity: 1; }
+    &::before
+    {
+        position: absolute;
+        content: "";
+        border-radius: 50px;
+        background-color: yellow;
+        z-index: -1;
+    }
+}
+
+.img_pers
+{
+    border-radius: 50%;
+    margin-bottom: 5vw;
+}
+
+.pers_titre { font-weight: bold; }
+
+.post
+{
+    font-family: 'Fraunces', serif;
+    color: #808397;
+}
+
+.arrow
+{
+    display: block;
+    animation: arrow 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.logo_all { position: relative; }
+
+.logo_up2
+{
+    position: absolute;
+    margin: 
+    {
+        left: 90vw;
+        top: 9vw;
+    };
+}
+
+.nav
+{
+    position: absolute;
+    word-spacing: 2vw;
+    font-size: 1vw;
+    color: white;
+    margin: 
+    {
+        left: 70vw;
+        top: 3vw;
+    };
+}
+
+.little_nav:hover
+{
+    color: rgb(207, 206, 206);
+}
+
+.button_nav
+{
+	background-color:#077adf;
+	border-radius:2.5vw;
+	display:inline-block;
+	color:#ffffff;
+	padding:1.5vw 3vw;
+}
+
+.button_nav:hover
+{
+    color: #000000;
+	background-color:#ffffff;
+}
+
+.button_nav:active
+{
+	position:relative;
+	top:1px;
+}
+
+
+.logo_bouh { color: #24554A; }
+.text_link:hover { color: white; }
+
+@keyframes arrow
+{
+    0%
+    {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 0;
+    }
+    100%
+    {
+        -webkit-transform: translateY(10vw);
+        transform: translateY(10vw);
+        opacity: 1;
+    }
+}
